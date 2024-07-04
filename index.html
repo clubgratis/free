@@ -699,8 +699,8 @@ const ed = 'RUR0dW5uZWw=';
  * @returns {string}
  */
 function getวเลสConfig(userIDs, hostName) {
-	const commonUrlPart = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=/vlesscf#VLESS ID TLS`;
-	const commonUrlPart1 = `:80?encryption=none&security=none&fp=randomized&type=ws&host=${hostName}&path=/vlesscf#VLESS ID NTLS}`;
+	const commonUrlPart = `:443?encryption=none&security=tls&sni=${hostName}&fp=randomized&type=ws&host=${hostName}&path=/vlesscf#VLESS TLS`;
+	const commonUrlPart1 = `:80?encryption=none&security=none&fp=randomized&type=ws&host=${hostName}&path=/vlesscf#VLESS NTLS`;
 	
 	// Split the userIDs into an array
 	const userIDArray = userIDs.split(",");
@@ -708,31 +708,21 @@ function getวเลสConfig(userIDs, hostName) {
 	// Prepare output string for each userID
 	const output1 = userIDArray.map((userID) => {
 		const วเลสMain = atob(pt) + '://' + userID + atob(at) + hostName + commonUrlPart;
-		return `<br /><h5>Vless443</h5>--------------\n
+		return `<br /><h5>Vless Tls</h5>--------------\n
 ${วเลสMain}\n
-<button class="border border-3 border-success rounded-4 fw-bold" style="width: 180px; height: 30px;" onclick='copyToClipboard("${วเลสMain}")'><i>Copy Vless 443</i></button>
+<button class="border border-3 border-success rounded-4 fw-bold" style="width: 180px; height: 30px;" onclick='copyToClipboard("${วเลสMain}")'><i>Copy Vless Tls</i></button>
 <br />`;
 	}).join('\n');
 	const output2 = userIDArray.map((userID) => {
 		const วเลสSec = atob(pt) + '://' + userID + atob(at) + พร็อกซีไอพี + commonUrlPart1;
-		return `<br /><h5>Vless80</h5>----------------\n
+		return `<br /><h5>Vless Ntls</h5>----------------\n
 ${วเลสSec}\n
-<button class="border border-3 border-success rounded-4 fw-bold" style="width: 180px; height: 30px;" onclick='copyToClipboard("${วเลสSec}")'><i>Copy Vless 80</i></button>
+<button class="border border-3 border-success rounded-4 fw-bold" style="width: 180px; height: 30px;" onclick='copyToClipboard("${วเลสSec}")'><i>Copy Vless Ntls</i></button>
 <br />`;
 	}).join('\n');
 	// Prepare header string
 	const header = `
-<div class="container list-unstyled text-center text-light fw-bold mt-5" style="height: 200px;">
-  <div id="Date">..., ...-...-...</div>
-	<ul class="list-unstyled d-flex justify-content-center display-4 h1 fw-bold">
-		<li id="hours">..</li>
-		<li id="point">:</li>
-		<li id="min">..</li>
-		<li id="point">:</li>
-		<li id="sec">..</li>
-  	</ul>
-	<br />
-	<p class="animation fw-bold text-danger mt-2"><i style="height: 30px;">SELAMAT DATANG</i></p>
+	<p class="text-center text-light fw-bold mt-2"><a style="height: 30px;">SELAMAT DATANG DICLUB</a></p>
 </div>`;
 	// HTML Head with CSS and FontAwesome library
 	const htmlHead = `
@@ -758,15 +748,15 @@ ${วเลสSec}\n
 	<style>
 	p{
 		font-size: 19px;
-		color: red;
-		animation-name: textzoom;
-		animation-duration: 1s;
+		color: white;
+		animation-name: slidein;
+		animation-duration: 0s;
 		animation-timing-function: linear;
 		animation-iteration-count: infinite;
 		animation-direction: alternate;
 	  }
 	  
-	  @keyframes textzoom {
+	  @keyframes slidein {
 		0%{
 		  font-size: 20px;
 		}
@@ -790,7 +780,7 @@ ${วเลสSec}\n
 	pre {
 	  white-space: pre-wrap;
 	  word-wrap: break-word;
-	  border: 2px solid green;
+	  border: 2px solid red;
 	  color: #000;
 	  padding: 6px;
 	  margin: 3px 0;
@@ -822,23 +812,7 @@ ${วเลสSec}\n
 		  console.error("Failed to copy to clipboard:", err);
 		});
 	}
-	function jam(){
-		var namaTahun = [ "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" ];
-		var namaHari = [ "Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jum'at", "Sabtu" ];
-		var hari_ini = new Date();
-		document.getElementById('Date').innerHTML = (namaHari[hari_ini.getDay()] + ", " + hari_ini.getDate()+ '-' + namaTahun[hari_ini.getMonth()] + '-' +hari_ini.getFullYear());
-		var h = hari_ini.getHours();
-		var m = hari_ini.getMinutes();
-		var s = hari_ini.getUTCSeconds();
-		var day = h<11 ? 'AM' : 'PM';
-		  h = h<10? '0'+h: h;
-		  m = m<10? '0'+m: m;
-		  s = s<10? '0'+s: s;
-		document.getElementById('hours').innerHTML = h;
-		document.getElementById('min').innerHTML = m;
-		document.getElementById('sec').innerHTML = s;
-	  }var inter = setInterval(jam,1000);
-  </script>
+	</script>
   </html>`;
 }
 
